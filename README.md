@@ -14,15 +14,27 @@ the Stepik interview.
 ### Installation
 
 Virtual environment:
-> poetry env use python3.9
+
+```bash
+poetry env use python3.9
+```
 
 Packages:
-> poetry install
+
+```bash
+poetry install
+```
 
 ### Configuration
 
 Configure MySQL using script:
-> mysql -e "source scripts/db_init.sql"k
+
+```bash
+mysql -e "source scripts/db_init.sql"
+```
 
 Create .env file and configure params
-> cp .env.example .env
+
+```bash
+cp .env.example .env
+```
