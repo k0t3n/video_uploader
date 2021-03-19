@@ -1,4 +1,5 @@
 # Video uploader
+![test](https://github.com/k0t3n/video_uploader/actions/workflows/main.yml/badge.svg)
 
 Video uploader is Django-based application used for uploading, saving and transcoding video files. This app is part of
 the Stepik interview.
