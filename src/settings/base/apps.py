@@ -9,7 +9,9 @@ INSTALLED_APPS = [
 
     # 3d-party apps
     'debug_toolbar',
+    'django_celery_beat',
 
     # project apps
     'src.apps.users',
+    'src.apps.videos',
 ]

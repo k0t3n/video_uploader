@@ -14,6 +14,7 @@ include(
     'base/security.py', optional('local/security.py'),
     'base/middleware.py',
     'base/apps.py',
+    'base/static.py',
     'base/*.py',
 
     optional('local/*.py'),

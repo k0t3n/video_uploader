@@ -6,4 +6,5 @@ HOSTNAME = env.str('HOSTNAME', default='127.0.0.1')
 
 ALLOWED_HOSTS = [
     HOSTNAME,
+    env.str('POD_IP'),
 ]
