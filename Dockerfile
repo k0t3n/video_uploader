@@ -4,7 +4,6 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /code
 COPY src /code
-
 RUN apt-get update && apt-get install -y default-mysql-server default-libmysqlclient-dev gcc
 RUN pip install -r requirements.txt && pip install uwsgi
 
