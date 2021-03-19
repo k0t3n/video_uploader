@@ -8,3 +8,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: docker build -t video_uploader .
+
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: k0t3n/video_uploader
+          tag_with_ref: true
