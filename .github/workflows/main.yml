@@ -20,6 +20,5 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: .
           push: true
-          tag_with_ref: true
+          tags: k0t3n/video_uploader:${GITHUB_SHA::8}
