@@ -1,4 +1,4 @@
-from src.settings import env
+from settings import env
 
 # see static.py for static configs
 AWS_ACCESS_KEY_ID = env.str('AWS_ACCESS_KEY_ID')
