@@ -9,7 +9,7 @@ def set_up_periodic_tasks(apps, *args, **kwargs):
 
     PeriodicTask.objects.create(
         name='Update encoding tasks',
-        task='src.apps.videos.tasks.update_encoding_tasks',
+        task='apps.videos.tasks.update_encoding_tasks',
         interval=IntervalSchedule.objects.create(
             every=30,
             period='seconds',

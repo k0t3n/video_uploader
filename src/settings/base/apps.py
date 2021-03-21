@@ -12,6 +12,6 @@ INSTALLED_APPS = [
     'django_celery_beat',
 
     # project apps
-    'src.apps.users',
-    'src.apps.videos',
+    'apps.users',
+    'apps.videos',
 ]

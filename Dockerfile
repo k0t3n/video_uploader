@@ -1,6 +1,7 @@
 FROM python:3.9-slim
 
 ENV PYTHONUNBUFFERED=1
+ENV DJANGO_SETTINGS_MODULE=settings
 
 WORKDIR /code
 COPY src /code
@@ -9,4 +10,4 @@ RUN pip install -r requirements.txt && pip install uwsgi
 
 EXPOSE 8080
 
-CMD uwsgi --http 0.0.0.0:8080 --module src.wsgi --processes 4 --threads 2 --master
+CMD uwsgi --http 0.0.0.0:8080 --module wsgi --processes 4 --threads 2 --master

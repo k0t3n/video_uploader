@@ -1,1 +1,1 @@
-default_app_config = 'src.apps.videos.apps.VideosConfig'
+default_app_config = 'apps.videos.apps.VideosConfig'

@@ -1,8 +1,8 @@
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 
-from src.apps.videos.forms import VideoUploadForm
-from src.apps.videos.models import Video
+from apps.videos.forms import VideoUploadForm
+from apps.videos.models import Video
 
 
 class VideoView(CreateView):

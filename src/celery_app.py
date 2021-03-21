@@ -1,3 +1,7 @@
+"""
+Disclaimer: DO NOT rename this file to celery.py, it will cause import collision
+"""
+
 import os
 
 from celery import Celery
