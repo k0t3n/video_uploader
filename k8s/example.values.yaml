@@ -1,0 +1,37 @@
+Backend:
+  Debug: 'false'
+  Host: '127.0.0.1'
+  Replicas: 1
+  Image: 'k0t3n/video_uploader:latest'
+  SecretKey: 'secret'
+  UploadFileMaxSizeMb: '10'
+  Service:
+    name: 'backend'
+
+Worker:
+  Replicas: 1
+
+Broker:
+  User: 'user'
+  Password: 'password'
+  Image: 'rabbitmq:3.8-alpine'
+  Service:
+    name: 'broker'
+    port: '5672'
+
+Database:
+  User: 'root'
+  Password: 'test'
+  Database: 'video_uploader'
+  Image: 'mysql:5.6'
+  Service:
+    name: 'mysql'
+    port: '3306'
+
+Services:
+  AWS:
+    ACCESS_KEY_ID: 'key-id'
+    SECRET_ACCESS_KEY: 'access-key'
+    STORAGE_BUCKET_NAME: 'stepik-video-uploader'
+    MEDIACONVERT_ENDPOINT_URL: 'https://secret.mediaconvert.eu-central-1.amazonaws.com'
+    MEDIACONVERT_ROLE: 'arn:aws:iam::1234567890:role/secret'

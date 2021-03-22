@@ -1,0 +1,32 @@
+kind: Deployment
+apiVersion: apps/v1
+
+metadata:
+  name: worker
+  namespace: {{$.Release.Namespace}}
+
+spec:
+  replicas: {{.Values.Worker.Replicas}}
+  selector:
+    matchLabels:
+      app: worker
+  template:
+    metadata:
+      labels:
+        app: worker
+      annotations:
+        deps/backend: {{include (print $.Template.BasePath "/configs/backend.yaml") . | sha256sum}}
+        deps/broker: {{include (print $.Template.BasePath "/configs/broker.yaml") . | sha256sum }}
+    spec:
+      containers:
+        - name: app
+          image: {{.Values.Backend.Image}}
+          envFrom:
+            - configMapRef:
+                name: backend-config
+            - secretRef:
+                name: backend-secret
+            - secretRef:
+                name: aws-secret
+          command: [ "celery" ]
+          args: [ "-A",  "celery_app", "worker", "-l", "DEBUG" ]

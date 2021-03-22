@@ -1,0 +1,55 @@
+kind: Deployment
+apiVersion: apps/v1
+
+metadata:
+  name: backend
+  namespace: {{.Release.Namespace}}
+
+spec:
+  replicas: {{.Values.Backend.Replicas}}
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+      annotations:
+        deps/backend: {{include (print $.Template.BasePath "/configs/backend.yaml") . | sha256sum}}
+    spec:
+      initContainers:
+        - name: migrations
+          image: {{.Values.Backend.Image}}
+          envFrom:
+            - configMapRef:
+                name: backend-config
+            - secretRef:
+                name: backend-secret
+            - secretRef:
+                name: aws-secret
+
+          command: [ './manage.py', 'migrate' ]
+      containers:
+        - name: app
+          image: {{.Values.Backend.Image}}
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: backend-config
+            - secretRef:
+                name: backend-secret
+            - secretRef:
+                name: aws-secret
+          readinessProbe:
+            httpGet:
+              path: /readiness
+              port: 8080
+            periodSeconds: 5
+            initialDelaySeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 5
