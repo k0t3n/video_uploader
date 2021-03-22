@@ -27,7 +27,7 @@ def update_encoding_tasks():
                 continue
 
             if job['Status'] == 'COMPLETE':
-                base_file_name = video.file.name.split('.')[0]
+                base_file_name = video.file_name.split('.')[0]
                 encoded_videos = []
                 for container in EncodedVideoContainerChoices.values:
                     file_name = f'{base_file_name}.{container}'
