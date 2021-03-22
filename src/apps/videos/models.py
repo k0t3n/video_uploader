@@ -17,7 +17,7 @@ class Video(TimeStampedModel):
         upload_to=get_file_upload_path,
         validators=[
             FileExtensionValidator(allowed_extensions=settings.AWS_MEDIACONVERT_SUPPORTED_FORMATS),
-            FileSizeValidator(max_size=settings.UPLOADED_FILE_MAX_SIZE_BYTES),
+            FileSizeValidator(max_size=settings.UPLOAD_FILE_MAX_SIZE_BYTES),
         ],
         storage=UploadedVideosStorage,
         blank=True,
