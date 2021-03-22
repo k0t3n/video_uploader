@@ -66,10 +66,15 @@ Configure `values.yaml` using example
 > cp example.values.yaml values.yaml
 ```
 
+Get your Minikube IP (mostly it's `127.0.0.1`)
+```bash
+> minikube ip
+127.0.0.1
+```
 and deploy
 
 ```bash
-> helm upgrade --install --atomic --cleanup-on-fail --create-namespace --namespace video-uploader app . --debug --set Backend.Host=$(minikube ip)
+> helm upgrade --install --atomic --cleanup-on-fail --create-namespace --namespace video-uploader app . --debug --set Backend.Host=127.0.0.1
 ```
 
 Start tunnel for service backend
