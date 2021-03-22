@@ -1,0 +1,31 @@
+kind: Deployment
+apiVersion: apps/v1
+
+metadata:
+  name: beat
+  namespace: {{$.Release.Namespace}}
+
+spec:
+  selector:
+    matchLabels:
+      app: beat
+  template:
+    metadata:
+      labels:
+        app: beat
+      annotations:
+        deps/backend: {{include (print $.Template.BasePath "/configs/backend.yaml") . | sha256sum}}
+        deps/broker: {{include (print $.Template.BasePath "/configs/broker.yaml") . | sha256sum }}
+    spec:
+      containers:
+        - name: app
+          image: {{.Values.Backend.Image}}
+          envFrom:
+            - configMapRef:
+                name: backend-config
+            - secretRef:
+                name: backend-secret
+            - secretRef:
+                name: aws-secret
+          command: [ "celery" ]
+          args: [ "-A",  "celery_app", "beat", "--scheduler", "django_celery_beat.schedulers:DatabaseScheduler" ]

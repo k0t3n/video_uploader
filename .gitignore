@@ -4,3 +4,4 @@ src/.env
 *.iml
 !src/settings/local/__init__.py
 src/settings/local/*
+k8s/values.yaml

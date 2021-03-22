@@ -146,7 +146,7 @@ def generate_mediaconvert_encode_job_config(file_url):
                     'OutputGroupSettings': {
                         'Type': 'FILE_GROUP_SETTINGS',
                         'FileGroupSettings': {
-                            'Destination': f'{settings.AWS_S3_MEDIA_PATH}/{settings.ENCODED_VIDEOS_DIR}/'
+                            'Destination': f'{settings.AWS_S3_MEDIA_PATH}/{settings.ENCODE_VIDEOS_DIR}/'
                         }
                     }
                 },

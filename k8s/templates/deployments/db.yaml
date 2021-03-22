@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - image: {{.Values.Database.Image}}
+          name: mariadb
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: {{.Values.Database.Password}}
+            - name: MYSQL_DATABASE
+              value: {{.Values.Database.Database}}
+          ports:
+            - containerPort: 3306
+              name: mysql

@@ -11,12 +11,12 @@ class VideoThumbnailsStorage(S3Boto3Storage):
 
 # noinspection PyAbstractClass
 class UploadedVideosStorage(S3Boto3Storage):
-    location = f'{settings.MEDIA_DIR}/{settings.UPLOADED_VIDEOS_DIR}'
+    location = f'{settings.MEDIA_DIR}/{settings.UPLOAD_VIDEOS_DIR}'
 
 
 # noinspection PyAbstractClass
 class EncodedVideosStorage(S3Boto3Storage):
-    location = f'{settings.MEDIA_DIR}/{settings.ENCODED_VIDEOS_DIR}'
+    location = f'{settings.MEDIA_DIR}/{settings.ENCODE_VIDEOS_DIR}'
 
 
 # noinspection PyAbstractClass

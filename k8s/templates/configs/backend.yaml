@@ -1,0 +1,11 @@
+kind: ConfigMap
+apiVersion: v1
+
+metadata:
+  name: backend-config
+  namespace: {{.Release.Namespace}}
+
+data:
+  DEBUG: {{.Values.Backend.Debug | quote}}
+  HOSTNAME: {{.Values.Backend.Host}}
+  UPLOAD_FILE_MAX_SIZE_MB: {{.Values.Backend.UploadFileMaxSizeMb | quote}}

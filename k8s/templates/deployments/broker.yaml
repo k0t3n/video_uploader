@@ -1,0 +1,26 @@
+kind: Deployment
+apiVersion: apps/v1
+
+metadata:
+  name: broker
+  namespace: {{.Release.Namespace}}
+
+spec:
+  selector:
+    matchLabels:
+      app: broker
+  template:
+    metadata:
+      labels:
+        app: broker
+    spec:
+      containers:
+        - name: app
+          image: {{.Values.Broker.Image}}
+          ports:
+            - containerPort: {{.Values.Broker.Service.port}}
+          envFrom:
+            - configMapRef:
+                name: broker-config
+            - secretRef:
+                name: broker-secret

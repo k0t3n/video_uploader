@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{.Values.Database.Service.name}}
+spec:
+  ports:
+    - port: {{.Values.Database.Service.port}}
+  selector:
+    app: mysql
+  clusterIP: None

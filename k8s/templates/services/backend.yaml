@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+
+metadata:
+  name: {{.Values.Backend.Service.name}}
+  namespace: {{.Release.Namespace}}
+
+spec:
+  type: NodePort
+  selector:
+    app: backend
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
