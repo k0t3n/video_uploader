@@ -33,7 +33,7 @@ Packages:
 > pip install -r requirements.txt
 ```
 
-### Deploy to k8s using Minikube
+## Deploy to k8s using Minikube
 
 Install [Helm](https://helm.sh/) and make sure it's up to date
 
