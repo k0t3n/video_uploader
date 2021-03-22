@@ -62,6 +62,10 @@ class Video(TimeStampedModel):
         return self.file.name
 
     @property
+    def file_name(self):
+        return self.file.name or self.link.split('/')[-1]
+
+    @property
     def url(self):
         return self.link or self.file.url
 
