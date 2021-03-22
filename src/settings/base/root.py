@@ -1,3 +1,3 @@
-ROOT_URLCONF = 'src.urls'
+ROOT_URLCONF = 'urls'
 
-WSGI_APPLICATION = 'src.wsgi.application'
+WSGI_APPLICATION = 'wsgi.application'

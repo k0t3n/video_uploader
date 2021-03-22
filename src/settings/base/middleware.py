@@ -1,5 +1,5 @@
 MIDDLEWARE = [
-    'src.utils.middlewares.HealthCheckMiddleware',  # must be on top
+    'utils.middlewares.HealthCheckMiddleware',  # must be on top
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

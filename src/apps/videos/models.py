@@ -6,10 +6,10 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.translation import gettext_lazy as _
 
-from src.apps.videos.choices import EncodedVideoContainerChoices, VideoStatusChoices
-from src.utils.models import TimeStampedModel
-from src.utils.storages import EncodedVideosStorage, get_file_upload_path, UploadedVideosStorage, VideoThumbnailsStorage
-from src.utils.validators import FileSizeValidator
+from apps.videos.choices import EncodedVideoContainerChoices, VideoStatusChoices
+from utils.models import TimeStampedModel
+from utils.storages import EncodedVideosStorage, get_file_upload_path, UploadedVideosStorage, VideoThumbnailsStorage
+from utils.validators import FileSizeValidator
 
 
 class Video(TimeStampedModel):
@@ -115,7 +115,7 @@ class EncodedVideo(TimeStampedModel):
 
 @receiver(post_save, sender=Video)
 def create_encoding_task(sender, instance, created, *args, **kwargs):
-    from src.apps.videos.tasks import create_encoding_job
+    from apps.videos.tasks import create_encoding_job
 
     if created:
         create_encoding_job.delay(video_id=instance.id)

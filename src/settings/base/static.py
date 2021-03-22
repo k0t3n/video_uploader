@@ -2,7 +2,7 @@ import os
 
 from settings import env
 
-DEFAULT_FILE_STORAGE = 'src.utils.storages.MediaStorage'
+DEFAULT_FILE_STORAGE = 'utils.storages.MediaStorage'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
 STATIC_URL = '/static/'

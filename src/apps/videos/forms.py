@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
-from src.apps.videos.models import Video
+from apps.videos.models import Video
 
 
 class VideoUploadForm(forms.ModelForm):

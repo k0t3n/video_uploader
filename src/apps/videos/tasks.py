@@ -2,11 +2,11 @@ import logging
 
 from django.db import transaction
 
-from src.apps.videos.choices import EncodedVideoContainerChoices, VideoStatusChoices
-from src.apps.videos.models import EncodedVideo, Video
-from src.celery_app import app
-from src.utils.aws import generate_mediaconvert_encode_job_config, get_mediaconvert_client
-from src.utils.storages import EncodedVideosStorage, VideoThumbnailsStorage
+from apps.videos.choices import EncodedVideoContainerChoices, VideoStatusChoices
+from apps.videos.models import EncodedVideo, Video
+from celery_app import app
+from utils.aws import generate_mediaconvert_encode_job_config, get_mediaconvert_client
+from utils.storages import EncodedVideosStorage, VideoThumbnailsStorage
 
 logger = logging.getLogger(__name__)
 

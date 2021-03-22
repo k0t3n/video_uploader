@@ -4,7 +4,8 @@ import environ
 from split_settings.tools import include, optional
 
 env = environ.Env()
-environ.Env.read_env(env_file=str(Path(__file__).parents[2]) + '/.env')
+# cannot reuse BASE_DIR cause settings are still not initialized
+environ.Env.read_env(env_file=str(Path(__file__).parents[1]) + '/.env')
 
 include(
     'base/env.py', optional('local/env.py'),

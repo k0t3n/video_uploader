@@ -1,4 +1,4 @@
-from src.settings import env
+from settings import env
 
 DEBUG = env.bool('DEBUG', default=False)
 
