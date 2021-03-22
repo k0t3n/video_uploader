@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mysql
+  name: mariadb
 spec:
   selector:
     matchLabels:
@@ -15,10 +15,8 @@ spec:
     spec:
       containers:
         - image: {{.Values.Database.Image}}
-          name: mysql
+          name: mariadb
           env:
-            {{/*            - name: MYSQL_USER*/}}
-            {{/*              value: {{.Values.Services.MySQL.User}}*/}}
             - name: MYSQL_ROOT_PASSWORD
               value: {{.Values.Database.Password}}
             - name: MYSQL_DATABASE
@@ -26,10 +24,3 @@ spec:
           ports:
             - containerPort: 3306
               name: mysql
-  {{/*          volumeMounts:*/}}
-  {{/*            - name: mysql-persistent-storage*/}}
-  {{/*              mountPath: /var/lib/mysql*/}}
-  {{/*      volumes:*/}}
-  {{/*        - name: mysql-persistent-storage*/}}
-  {{/*          persistentVolumeClaim:*/}}
-  {{/*            claimName: mysql-pv-claim*/}}

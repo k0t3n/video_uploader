@@ -23,9 +23,9 @@ Database:
   User: 'root'
   Password: 'test'
   Database: 'video_uploader'
-  Image: 'mysql:5.6'
+  Image: 'mariadb:10.5'
   Service:
-    name: 'mysql'
+    name: 'mariadb'
     port: '3306'
 
 Services:
