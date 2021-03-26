@@ -30,6 +30,7 @@ Database:
 
 Services:
   AWS:
+    S3_REGION_NAME: 'eu-central-1'
     ACCESS_KEY_ID: 'key-id'
     SECRET_ACCESS_KEY: 'access-key'
     STORAGE_BUCKET_NAME: 'stepik-video-uploader'
